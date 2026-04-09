@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="0; url=./index.html" />
+    <title>Ciphera</title>
+  </head>
+  <body></body>
+</html>
+
+const storeLinks = {
+  ios: "#",
+  android: "#",
+};
+
+document.querySelectorAll("[data-store-link]").forEach((link) => {
+  const key = link.getAttribute("data-store-link");
+  const target = storeLinks[key];
+
+  if (!target || target === "#") {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.alert(
+        "Store link is not connected yet. Replace the placeholder URL in app.js."
+      );
+    });
+    return;
+  }
+
+  link.setAttribute("href", target);
+  link.setAttribute("target", "_blank");
+  link.setAttribute("rel", "noreferrer");
+});
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ciphera</title>
+    <meta
+      name="description"
+      content="Ciphera helps users read conversation dynamics with cleaner summaries, deeper signals, and premium AI-assisted insights."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="Ciphera home">
+          <span class="brand-mark">C</span>
+          <span class="brand-text">Ciphera</span>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#faq">FAQ</a>
+          <a href="#download">Download</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Conversation Intelligence</p>
+            <h1>Understand the hidden rhythm behind a chat.</h1>
+            <p class="hero-text">
+              Ciphera turns raw conversations into clean, readable insight.
+              Track emotional momentum, spot risk signals, unlock deeper AI
+              interpretation, and move from guesswork to clarity.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button-primary" href="#download">Get the app</a>
+              <a class="button button-secondary" href="#features">See features</a>
+            </div>
+
+            <div class="hero-meta">
+              <span>AI-assisted analysis</span>
+              <span>Premium reports</span>
+              <span>iOS and Android</span>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="device-card">
+              <div class="device-top">
+                <span class="signal-pill">Live interpretation</span>
+                <span class="status-dot"></span>
+              </div>
+
+              <div class="device-block">
+                <p class="device-label">Emotional Heatmap</p>
+                <strong>Attention is rising, but the tone is inconsistent.</strong>
+              </div>
+
+              <div class="device-grid">
+                <div class="mini-card">
+                  <span class="mini-label">Interest level</span>
+                  <strong>78%</strong>
+                </div>
+                <div class="mini-card">
+                  <span class="mini-label">Risk scan</span>
+                  <strong>Medium</strong>
+                </div>
+                <div class="mini-card">
+                  <span class="mini-label">Intent</span>
+                  <strong>Mixed</strong>
+                </div>
+                <div class="mini-card">
+                  <span class="mini-label">AI status</span>
+                  <strong>Ready</strong>
+                </div>
+              </div>
+
+              <div class="timeline-card">
+                <div class="timeline-header">
+                  <span>Conversation preview</span>
+                  <span>Premium layer</span>
+                </div>
+                <div class="timeline-line line-warm"></div>
+                <div class="timeline-line line-soft"></div>
+                <div class="timeline-line line-neutral"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="trust-strip">
+          <div class="trust-item">
+            <strong>Clear output</strong>
+            <span>Readable summaries instead of noisy screens.</span>
+          </div>
+          <div class="trust-item">
+            <strong>Premium depth</strong>
+            <span>Unlock deeper layers only when users need more context.</span>
+          </div>
+          <div class="trust-item">
+            <strong>Flexible access</strong>
+            <span>Subscriptions and coin-based flows for advanced analysis.</span>
+          </div>
+        </section>
+
+        <section class="section" id="features">
+          <div class="section-head">
+            <p class="eyebrow">Features</p>
+            <h2>Built to make signals easier to understand.</h2>
+            <p>
+              Ciphera focuses on readable interpretation. The product keeps the
+              analysis layer simple enough for quick decisions and deep enough
+              for premium users who want more detail.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <h3>AI Assistant</h3>
+              <p>
+                Ask direct questions about a conversation and receive focused,
+                structured responses without losing the broader context.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <h3>Signal Layers</h3>
+              <p>
+                Surface emotional movement, interest shifts, red flags, and
+                intent clues in a cleaner analysis flow.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <h3>Premium Reports</h3>
+              <p>
+                Unlock fuller summaries, deeper modules, and expanded insight
+                blocks when a user wants more than a preview.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <h3>Coins & Access</h3>
+              <p>
+                Support flexible usage with consumable packs for selected
+                premium actions and focused advanced flows.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section section-alt" id="how-it-works">
+          <div class="section-head">
+            <p class="eyebrow">How It Works</p>
+            <h2>Simple input, structured insight.</h2>
+          </div>
+
+          <div class="steps">
+            <article class="step-card">
+              <span class="step-number">01</span>
+              <h3>Bring in the conversation</h3>
+              <p>
+                Users paste messages or move through an analysis flow designed
+                to gather the needed context.
+              </p>
+            </article>
+
+            <article class="step-card">
+              <span class="step-number">02</span>
+              <h3>Read the signal stack</h3>
+              <p>
+                Ciphera organizes key indicators into readable sections instead
+                of overwhelming the user with raw output.
+              </p>
+            </article>
+
+            <article class="step-card">
+              <span class="step-number">03</span>
+              <h3>Go deeper when needed</h3>
+              <p>
+                Premium access and coin-based actions open deeper interpretation
+                for users who want fuller analysis.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <p class="eyebrow">Why Ciphera</p>
+            <h2>Clean enough for everyday users, structured enough for growth.</h2>
+          </div>
+
+          <div class="split-grid">
+            <div class="value-panel">
+              <h3>For users</h3>
+              <ul class="clean-list">
+                <li>Readable summaries instead of cluttered dashboards</li>
+                <li>Direct premium paths for deeper interpretation</li>
+                <li>Fast access to AI-assisted conversation insight</li>
+              </ul>
+            </div>
+
+            <div class="value-panel">
+              <h3>For the product</h3>
+              <ul class="clean-list">
+                <li>Supports subscriptions and coin purchases</li>
+                <li>Clear legal and privacy links</li>
+                <li>Scales into campaigns, analytics, and attribution flows</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section faq-section" id="faq">
+          <div class="section-head">
+            <p class="eyebrow">FAQ</p>
+            <h2>Quick answers for first-time visitors.</h2>
+          </div>
+
+          <div class="faq-list">
+            <details class="faq-item" open>
+              <summary>What is Ciphera?</summary>
+              <p>
+                Ciphera is a conversation intelligence app that helps users
+                interpret message flow, emotional movement, and deeper chat
+                signals with AI-assisted analysis.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Does Ciphera include premium content?</summary>
+              <p>
+                Yes. Ciphera supports premium access and additional paid flows
+                such as coin-based actions for deeper analysis paths.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Where can users read the legal documents?</summary>
+              <p>
+                The app includes direct links to both the Privacy Policy and the
+                Terms of Use. Those links are also listed below.
+              </p>
+            </details>
+          </div>
+        </section>
+
+        <section class="download-card" id="download">
+          <div>
+            <p class="eyebrow">Download</p>
+            <h2>Ready to launch Ciphera publicly.</h2>
+            <p>
+              Replace the store links below with your final App Store and Google
+              Play URLs when the product is ready.
+            </p>
+          </div>
+
+          <div class="download-actions">
+            <a class="button button-primary" href="#" data-store-link="ios">
+              App Store
+            </a>
+            <a class="button button-secondary" href="#" data-store-link="android">
+              Google Play
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div>
+          <strong>Ciphera</strong>
+          <p>Conversation intelligence with a cleaner product surface.</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="https://azizkutlu.github.io/Ciphera-Privacy-Policy/" target="_blank" rel="noreferrer">Privacy Policy</a>
+          <a href="https://azizkutlu.github.io/Ciphera-Eula/terms.html" target="_blank" rel="noreferrer">Terms of Use</a>
+        </div>
+      </footer>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+
+# Ciphera Site
+
+Static landing page for Ciphera.
+
+## Local preview
+
+```bash
+cd /Users/azizkutlu/Documents/ciphera-site
+python3 -m http.server 4180
+```
+
+Open:
+
+`http://localhost:4180`
+
+## Publish with GitHub Pages
+
+1. Create a GitHub repository, for example `Ciphera-Site`.
+2. Upload all files in this folder to the root of that repository.
+3. In GitHub, open `Settings > Pages`.
+4. Choose `Deploy from a branch`.
+5. Select `main` and `/ (root)`.
+6. Save and wait for GitHub Pages to publish.
+
+Expected live URL format:
+
+`https://azizkutlu.github.io/Ciphera-Site/`
+
+## Before publishing
+
+Update the store URLs in `app.js`:
+
+- `ios`
+- `android`
+
+:root {
+  --bg: #f5f1ea;
+  --surface: #fffdfa;
+  --surface-soft: #f0e7dc;
+  --line: #ddd1c2;
+  --text: #201914;
+  --muted: #6b6056;
+  --accent: #b86a30;
+  --accent-soft: #e9c7a7;
+  --shadow: 0 18px 50px rgba(40, 25, 12, 0.08);
+  --radius-xl: 28px;
+  --radius-lg: 22px;
+  --radius-md: 16px;
+  --content-width: 1180px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", system-ui, sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(233, 199, 167, 0.55), transparent 24%),
+    linear-gradient(180deg, #fbf8f4 0%, var(--bg) 100%);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-shell {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 8px 0 28px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent) 0%, #d59258 100%);
+  color: white;
+  font-weight: 800;
+}
+
+.brand-text {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 30px;
+  align-items: center;
+  padding: 22px 0 34px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.hero h1,
+.section-head h2,
+.download-card h2 {
+  margin: 0;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 6vw, 74px);
+  max-width: 11ch;
+}
+
+.hero-text,
+.section-head p,
+.download-card p,
+.feature-card p,
+.step-card p,
+.value-panel li,
+.faq-item p,
+.footer p {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.hero-text {
+  max-width: 60ch;
+  margin: 18px 0 0;
+}
+
+.hero-actions,
+.download-actions,
+.footer-links,
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-actions {
+  margin-top: 28px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 18px;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 800;
+  border: 1px solid transparent;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  color: #fff;
+  background: linear-gradient(135deg, #b86a30 0%, #cf8551 100%);
+  box-shadow: 0 10px 24px rgba(184, 106, 48, 0.22);
+}
+
+.button-secondary {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.62);
+  border-color: var(--line);
+}
+
+.hero-meta {
+  margin-top: 20px;
+}
+
+.hero-meta span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.66);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.hero-card,
+.trust-strip,
+.feature-card,
+.step-card,
+.value-panel,
+.faq-item,
+.download-card {
+  background: rgba(255, 253, 250, 0.82);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.hero-card {
+  padding: 18px;
+  border-radius: var(--radius-xl);
+}
+
+.device-card {
+  border-radius: 24px;
+  padding: 22px;
+  background:
+    linear-gradient(180deg, rgba(252, 248, 243, 0.95) 0%, rgba(244, 235, 225, 0.88) 100%);
+  border: 1px solid rgba(203, 181, 160, 0.72);
+}
+
+.device-top,
+.timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.signal-pill {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--line);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #4f8d53;
+}
+
+.device-block,
+.mini-card,
+.timeline-card {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(212, 200, 188, 0.92);
+  border-radius: 18px;
+}
+
+.device-block {
+  margin-top: 18px;
+  padding: 18px;
+}
+
+.device-label,
+.mini-label,
+.timeline-header {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.device-block strong,
+.mini-card strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.device-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.mini-card {
+  padding: 14px;
+}
+
+.mini-card strong {
+  font-size: 18px;
+}
+
+.timeline-card {
+  margin-top: 14px;
+  padding: 16px;
+}
+
+.timeline-line {
+  height: 10px;
+  border-radius: 999px;
+  margin-top: 12px;
+}
+
+.line-warm {
+  width: 86%;
+  background: linear-gradient(90deg, #c67033 0%, #ecc19c 100%);
+}
+
+.line-soft {
+  width: 62%;
+  background: linear-gradient(90deg, #cc9a66 0%, #f0decd 100%);
+}
+
+.line-neutral {
+  width: 74%;
+  background: linear-gradient(90deg, #b8afa7 0%, #ebe1d5 100%);
+}
+
+.trust-strip,
+.download-card {
+  border-radius: var(--radius-xl);
+}
+
+.trust-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  padding: 18px;
+}
+
+.trust-item {
+  padding: 10px 12px;
+}
+
+.trust-item strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.trust-item span {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.section {
+  padding: 86px 0 0;
+}
+
+.section-alt {
+  padding-top: 76px;
+}
+
+.section-head {
+  max-width: 720px;
+  margin-bottom: 24px;
+}
+
+.section-head h2,
+.download-card h2 {
+  font-size: clamp(30px, 4vw, 46px);
+}
+
+.section-head p {
+  margin: 14px 0 0;
+}
+
+.feature-grid,
+.steps,
+.split-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.feature-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.steps {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.split-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.feature-card,
+.step-card,
+.value-panel,
+.download-card {
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.feature-card h3,
+.step-card h3,
+.value-panel h3,
+.faq-item summary {
+  margin: 0;
+  font-size: 21px;
+  line-height: 1.25;
+}
+
+.feature-card p,
+.step-card p {
+  margin: 12px 0 0;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  background: var(--surface-soft);
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.clean-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.clean-list li + li {
+  margin-top: 10px;
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq-item {
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item p {
+  margin: 12px 0 0;
+}
+
+.download-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 86px;
+}
+
+.footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 36px 0 8px;
+}
+
+.footer p {
+  max-width: 460px;
+  margin: 8px 0 0;
+}
+
+.footer-links {
+  justify-content: flex-end;
+}
+
+.footer-links a {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@media (max-width: 1080px) {
+  .hero,
+  .feature-grid,
+  .steps,
+  .split-grid,
+  .trust-strip,
+  .download-card,
+  .footer {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+
+  .hero {
+    gap: 24px;
+  }
+
+  .download-card,
+  .footer {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-shell {
+    padding: 18px 14px 40px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 18px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: 12px 16px;
+  }
+
+  .hero {
+    padding-top: 10px;
+  }
+
+  .feature-grid,
+  .steps,
+  .split-grid,
+  .trust-strip {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .device-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding-top: 64px;
+  }
+
+  .download-card {
+    margin-top: 64px;
+  }
+}
