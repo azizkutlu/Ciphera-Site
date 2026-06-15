@@ -8,9 +8,6 @@
   <meta name="apple-itunes-app" content="app-id=6761788818">
   <meta name="google-play-app" content="app-id=com.azizkutlu.ciphera">
   <meta name="theme-color" content="#020706">
-  <meta property="og:title" content="Cipheria">
-  <meta property="og:description" content="Telefonunu analiz et — uygulamayı indir.">
-  <meta property="og:type" content="website">
   <style>
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
@@ -73,25 +70,82 @@
       var IOS_URL     = "https://apps.apple.com/app/id6761788818";
       var ANDROID_URL = "https://play.google.com/store/apps/details?id=com.azizkutlu.ciphera";
       var WEB_URL     = "https://azizkutlu.github.io/Ciphera-Site/";
+      var LOG_URL     = "https://us-east1-ciphera-2a4ad.cloudfunctions.net/logClick";
 
       var ua = navigator.userAgent || navigator.vendor || "";
       var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
       var isAndroid = /android/i.test(ua);
-
-      // UTM/kampanya parametrelerini koru — Play Store'da install_referrer
-      // olarak iletilir (attribution için kritik).
       var qs = window.location.search || "";
 
-      if (isAndroid) {
-        var sep = ANDROID_URL.indexOf("?") > -1 ? "&" : "?";
-        var referrer = qs ? sep + "referrer=" + encodeURIComponent(qs.substring(1)) : "";
-        window.location.replace(ANDROID_URL + referrer);
-      } else if (isIOS) {
-        window.location.replace(IOS_URL + qs);
-      } else {
-        // Desktop / bilinmeyen — manuel butonları göster, spinner'ı gizle
-        document.getElementById("spinner").style.display = "none";
-        document.getElementById("manual").style.display = "flex";
+      function parseParams(search) {
+        var out = {};
+        if (!search || search.length < 2) return out;
+        var s = search.charAt(0) === "?" ? search.substring(1) : search;
+        var parts = s.split("&");
+        for (var i = 0; i < parts.length; i++) {
+          var kv = parts[i].split("=");
+          if (kv[0]) out[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1] || "");
+        }
+        return out;
+      }
+      var params = parseParams(qs);
+
+      var clickPayload = {
+        utm_source:   params.utm_source   || "",
+        utm_medium:   params.utm_medium   || "",
+        utm_campaign: params.utm_campaign || "",
+        utm_content:  params.utm_content  || "",
+        utm_term:     params.utm_term     || "",
+        user_agent:   ua,
+        language:     navigator.language || navigator.userLanguage || "",
+        timezone:     (Intl.DateTimeFormat().resolvedOptions().timeZone) || "",
+        screen:       (window.screen && window.screen.width || 0) + "x" + (window.screen && window.screen.height || 0),
+        viewport:     window.innerWidth + "x" + window.innerHeight,
+        platform:     isIOS ? "ios" : isAndroid ? "android" : "desktop",
+        referrer:     document.referrer || "",
+        page_url:     window.location.href || "",
+        ts_client_iso: new Date().toISOString(),
+      };
+
+      function redirectNow() {
+        if (isAndroid) {
+          var refQs = qs ? qs.substring(1) : "";
+          var sep = ANDROID_URL.indexOf("?") > -1 ? "&" : "?";
+          var referrer = refQs ? sep + "referrer=" + encodeURIComponent(refQs) : "";
+          window.location.replace(ANDROID_URL + referrer);
+        } else if (isIOS) {
+          window.location.replace(IOS_URL + qs);
+        } else {
+          var s = document.getElementById("spinner"); if (s) s.style.display = "none";
+          var m = document.getElementById("manual"); if (m) m.style.display = "flex";
+        }
+      }
+
+      // Click log'u GÖNDER, ardından yönlendir. sendBeacon — sayfa unload
+      // sırasında log'un gönderilmesini garantiler. 800ms safety timeout —
+      // log başarısız olsa bile yönlendirme garanti.
+      var redirected = false;
+      function safeRedirect() { if (!redirected) { redirected = true; redirectNow(); } }
+      setTimeout(safeRedirect, 800);
+
+      try {
+        var blob = new Blob([JSON.stringify(clickPayload)], { type: "application/json" });
+        var beaconOk = (navigator.sendBeacon && navigator.sendBeacon(LOG_URL, blob));
+        if (beaconOk) {
+          setTimeout(safeRedirect, 50);
+        } else {
+          fetch(LOG_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(clickPayload),
+            keepalive: true,
+            mode: "cors",
+          })
+            .catch(function(){})
+            .finally(safeRedirect);
+        }
+      } catch (e) {
+        safeRedirect();
       }
     })();
   </script>
